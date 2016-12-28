@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %} :: {% if settings.SITE_TITLE %}{{ settings.SITE_TITLE }}{% endif %} ::</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89371210-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- header-section-starts -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">  
+                {% block navbar_title %}
+                {% if settings.SITE_TITLE %}<a href="/"><h1>{{ settings.SITE_TITLE }}</h1></a>{% endif %}
+                {% endblock%}
+            </div>
+            <div class="pages">
+                <ul>
+                    {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
+                    <!--<li><a class="active" href="index.html">Articles</a></li>
+                    <li><a href="3dprinting.html">3D Printers</a></li>
+                    <li><a href="404.html">Tutorials</a></li>-->
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="col-md-7 content-left">
+                {% block main %}{% endblock %}
+            </div>
+            <div class="col-md-5 content-right">
+                {% block right_panel %}
+                {% include "blog/includes/filter_panel.html" %}
+                {% endblock %}
+            </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="col-md-3 footer-links">
+                    <h4>Other pages and things</h4>
+                    <a href="#">Design a creative Blog</a>
+                    <a href="#">Design a iPad Website</a>
+                    <a href="#">Single Page sales portfolio </a>
+                    <a href="#">Flat product website in Photoshop</a>
+                    <a href="#">Design a creative Blog</a>
+                    <a href="#">Design a iPad Website</a>
+                    <a href="#">Single Page sales portfolio </a>
+                    <a href="#">Flat product website</a>
+                </div>
+                <div class="col-md-3 footer-links span_66">
+                    <a href="#">Flat product website in Photoshop</a>
+                    <a href="#">Design a creative Blog</a>
+                    <a href="#">Design a iPad Website </a>
+                </div>
+                <div class="col-md-3 footer-links">
+                    <h4>Relevant Articles</h4>
+                    <a href="#">Design a creative Blog</a>
+                    <a href="#">Design a iPad Website</a>
+                    <a href="#">Single Page sales portfolio </a>
+                    <a href="#">Flat product website</a>
+                    <a href="#">Design a creative Blog</a>
+                </div>
+                <div class="col-md-3 footer-links">
+                    <h4>Other pages and things</h4>
+                    <a href="#">Blaz Robar</a>
+                    <a href="#">Nick Toranto</a>
+                    <a href="#">Joisp Kelava</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyrights">
+                    <p>Konstructs © 2015 All rights reserved | Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% block footer_js %}
+{% include "includes/footer_scripts.html" %}
+{% endblock %}
+
+</body>
+</html>

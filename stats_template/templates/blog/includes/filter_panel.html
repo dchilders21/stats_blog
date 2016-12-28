@@ -1,0 +1,22 @@
+<div class="content-right-top">
+{% load blog_tags keyword_tags mezzanine_tags i18n %}
+
+{% block blog_recent_posts %}
+{% blog_recent_posts 5 as recent_posts %}
+{% if recent_posts %}
+
+<h5 class="head">{% trans "Recent Posts" %}</h5>  
+{% for recent_post in recent_posts %} 
+<a href="{{ recent_post.get_absolute_url }} ">
+<div class="editor text-center">
+    <h3>{{ recent_post.title }} </h3>
+    <p>{{ recent_post.description_from_content|safe }}</p>
+    <label>{% blocktrans with sometime=recent_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</label>
+    <span></span>
+</div>
+</a>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+</div>

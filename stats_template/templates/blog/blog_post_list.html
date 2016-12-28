@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block main %}
+
+{% if tag or category or year or month or author %}
+    {% block blog_post_list_filterinfo %}
+    <p>
+    {% if tag %}
+        {% trans "Viewing posts tagged" %} {{ tag }}
+    {% else %}{% if category %}
+        {% trans "Viewing posts for the category" %} {{ category }}
+    {% else %}{% if year or month %}
+        {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
+        {{ year }}
+    {% else %}{% if author %}
+        {% trans "Viewing posts by" %}
+        {{ author.get_full_name|default:author.username }}
+    {% endif %}{% endif %}{% endif %}{% endif %}
+    {% endblock %}
+    </p>
+{% else %}
+    {% if page %}
+    {% block blog_post_list_pagecontent %}
+
+    {% endblock %}
+    {% endif %}
+{% endif %}
+
+{% for blog_post in blog_posts.object_list %}
+<div class="article">
+    <h5 class="head">Today's Predictions {% now "m/d/y" %} </h5>
+    {% with blog_post.categories.all as categories %}
+    {% if categories %}
+    {% for category in categories %}
+    <h6>{{ category }}</h6>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% block blog_post_list_post_title %}
+    {% editable blog_post.title %}
+    <a class="title"  href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+    {% endeditable %}
+    {% endblock %}
+
+    {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+    {% block blog_post_list_post_featured_image %}
+    <a href="{{ blog_post.get_absolute_url }}">
+        <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}">
+    </a>
+    {% endblock %}
+    {% endif %}
+
+    {% block blog_post_list_post_content %}
+    {% editable blog_post.content %}
+    {{ blog_post.description_from_content|safe }}
+    {% endeditable %}
+    {% endblock %}
+
+    {% block blog_post_list_post_metainfo %}
+    {% editable blog_post.publish_date %}
+    <h6 class="post-meta">
+        {% trans "Posted" %}:
+        {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+    </h6>
+    {% endeditable %}
+    {% endblock %}
+
+    {% block blog_post_list_post_links %}
+
+    <div class="blog-list-detail">
+        {% keywords_for blog_post as tags %}
+        <p>
+        <a href="{{ blog_post.get_absolute_url }}">{% trans "read more" %}</a>
+        {% if blog_post.allow_comments %}
+        /
+        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+        <a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+            data-disqus-identifier="{% disqus_id_for blog_post %}">
+            {% trans "Comments" %}
+        </a>
+        {% else %}
+        <a href="{{ blog_post.get_absolute_url }}#comments">
+            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+        </a>
+        {% endif %}
+        {% endif %}
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+
+{% endfor %}
+
+{% pagination_for blog_posts %}
+
+{% if settings.COMMENTS_DISQUS_SHORTNAME %}
+{% include "generic/includes/disqus_counts.html" %}
+{% endif %}
+
+{% endblock %}
+
+{% block right_panel %}
+{% include "blog/includes/filter_panel.html" %}
+{% endblock %}
