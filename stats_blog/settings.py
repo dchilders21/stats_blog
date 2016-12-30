@@ -5,6 +5,8 @@ import os
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
 
+from django.utils.crypto import get_random_string
+
 
 ######################
 # MEZZANINE SETTINGS #
@@ -77,6 +79,9 @@ from django.utils.translation import ugettext_lazy as _
 #     ),
 # )
 
+chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+SECRET_KEY = get_random_string(50, chars)
+
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
 BLOG_USE_FEATURED_IMAGE = True
@@ -92,7 +97,8 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['198.199.119.91',
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost',
+                 '198.199.119.91',
                  'sharperpicks.com']
 
 # Local time zone for this installation. Choices can be found here:
@@ -119,7 +125,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -144,9 +150,9 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        "ENGINE": "django.db.backends.sqlite3",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "dev.db",
         # Not used with sqlite3.
         "USER": "",
         # Not used with sqlite3.
@@ -231,6 +237,11 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    'mezzanine_api',
+    'rest_framework',
+    'rest_framework_swagger',
+    'oauth2_provider',
+    "dbbackup",
     "stats_template",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -253,10 +264,14 @@ INSTALLED_APPS = (
     # "mezzanine.mobile",
 )
 
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
+
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
 MIDDLEWARE_CLASSES = (
+    'mezzanine_api.middleware.ApiMiddleware',
     "mezzanine.core.middleware.UpdateCacheMiddleware",
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -296,6 +311,14 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+
+#####################
+# REST API SETTINGS #
+#####################
+try:
+    from mezzanine_api.settings import *
+except ImportError:
+    pass
 
 ##################
 # LOCAL SETTINGS #

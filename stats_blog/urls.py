@@ -29,6 +29,10 @@ if settings.USE_MODELTRANSLATION:
     ]
 
 urlpatterns += [
+
+    # REST API URLs
+    url("^api/", include("mezzanine_api.urls")),
+    
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 
@@ -96,6 +100,7 @@ urlpatterns += [
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+
 
 ]
 
