@@ -1,5 +1,6 @@
 import requests
 import datetime
+import pytz
 
 CLIENT_ID = "KFzaBysyi0lyPM8yqHovUZGWfYNMoQPRtEBHu4ef"
 CLIENT_SECRET = "xxnkHpzjbR84IaLX387Lar1q9RkC1jQQgfWcchcnOmjhlXZ5tuiHgE5QVjdPlk34lMBMCefOiePRPuw8Axlf8vX9exs1dHdVX3a63MDoCG1UR11TQoOxYoG8M4KXeeMZ"
@@ -14,12 +15,24 @@ oauth_args = dict(client_id=CLIENT_ID,
                   password=PASSWORD)
 
 
+def tz2ntz(date_obj, tz, ntz):
+    """
+    :param date_obj: datetime object
+    :param tz: old timezone
+    :param ntz: new timezone
+    """
+    if isinstance(date_obj, datetime.date) and tz and ntz:
+       date_obj = date_obj.replace(tzinfo=pytz.timezone(tz))
+       return date_obj.astimezone(pytz.timezone(ntz))
+    return False
+
+
 todays_request = requests.get('http://162.243.153.66/api')
 todays_data = todays_request.json()
 
 data = todays_data['data']
 
-today = datetime.date.today().strftime('%m/%d/%y')
+today = tz2ntz(datetime.datetime.utcnow(), 'UTC', 'US/Pacific').strftime('%m/%d/%y')
 print(today)
 
 req = requests.post('http://sharperpicks.com/api/oauth2/token/', data=oauth_args)
@@ -27,7 +40,7 @@ print(req.text)
 json = req.json()
 
 if 'access_token' in json:
-    AUTHORIZATION=json['token_type'] + ' ' + json['access_token']
+    AUTHORIZATION = json['token_type'] + ' ' + json['access_token']
     print(AUTHORIZATION)
     params = dict(authorization=AUTHORIZATION)
 
