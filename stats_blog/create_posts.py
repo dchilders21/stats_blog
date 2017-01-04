@@ -1,11 +1,8 @@
 import requests
 import datetime
-import urlparse
-import subprocess
-import warnings
 
-CLIENT_ID = "ZDIYrYeuu09pWRgDaOEsMsteu8u95BzL2BXWc95y"
-CLIENT_SECRET = "UumOO1wjPf88gVA93091dlcobrOhrpFw30HeOHwjvr2Ld1o6poqucHCJAPOp0axqvN5ryHvvDjA5lmVT89UD0kuFfhFVCYQqgv9LYLz9VXiZTojrv0JrVV7TqObmf7yf"
+CLIENT_ID = "KFzaBysyi0lyPM8yqHovUZGWfYNMoQPRtEBHu4ef"
+CLIENT_SECRET = "xxnkHpzjbR84IaLX387Lar1q9RkC1jQQgfWcchcnOmjhlXZ5tuiHgE5QVjdPlk34lMBMCefOiePRPuw8Axlf8vX9exs1dHdVX3a63MDoCG1UR11TQoOxYoG8M4KXeeMZ"
 
 USERNAME = 'sammy'
 PASSWORD = '1qaz2wsx'
@@ -26,6 +23,7 @@ today = datetime.date.today().strftime('%m/%d/%y')
 print(today)
 
 req = requests.post('http://sharperpicks.com/api/oauth2/token/', data=oauth_args)
+print(req.text)
 json = req.json()
 
 if 'access_token' in json:
