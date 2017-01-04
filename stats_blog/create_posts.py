@@ -25,7 +25,7 @@ data = todays_data['data']
 today = datetime.date.today().strftime('%m/%d/%y')
 print(today)
 
-req = requests.post('http://localhost:8000/api/oauth2/token/', data=oauth_args)
+req = requests.post('http://sharperpicks.com/api/oauth2/token/', data=oauth_args)
 json = req.json()
 
 if 'access_token' in json:
@@ -49,11 +49,11 @@ if 'access_token' in json:
         content_data = dict(title=title,
                             content=content,
                             categories=categories)
-        r = requests.post('http://127.0.0.1:8000/api/posts?format=json', headers=params, data=content_data)
+        r = requests.post('http://sharperpicks.com/api/posts?format=json', headers=params, data=content_data)
 
         print(r)
 
 else:
-  print('No Key Given')
+    print('No Key Given')
 
 
