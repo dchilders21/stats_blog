@@ -45,7 +45,7 @@ if 'access_token' in json:
     params = dict(authorization=AUTHORIZATION)
 
     for d in data:
-        title = d['away_team'] + ' @ ' + d['home_team'] + ' ' + today
+        title = d['away_market'] + ' ' + d['away_team'] + ' @ ' + d['home_market'] + ' ' + d['home_team'] + ' ' + today
         categories = 'NBA'
 
         winner = d['away_team'] if d['away_result_preds'] == 1.0 else d['home_team']
@@ -54,7 +54,7 @@ if 'access_token' in json:
 
         line = "Over" if total >= d['over_under'] else "Under"
 
-        content = d['away_team'] + ' ' + str(d['spread']) + '.' + ' Over/Under ' + str(d['over_under']) + '. ' + \
+        content = d['away_market'] + ' ' + d['away_team'] + ' ' + str(d['spread']) + '.' + ' Over/Under ' + str(d['over_under']) + '. ' + \
                         winner + ' and the ' + line + '.'
 
         content_data = dict(title=title,
