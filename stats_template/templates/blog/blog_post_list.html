@@ -6,7 +6,7 @@
 {% for blog_post in blog_posts.object_list %}
 
     <div class="article">
-        <h5 class="head">Today's Predictions {% now "m/d/y" %} </h5>
+        <h5 class="head">Today's Predictions</h5>
         {% with blog_post.categories.all as categories %}
         {% if categories %}
         {% for category in categories %}
