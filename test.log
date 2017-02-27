@@ -1,0 +1,184 @@
+DEBUG:root:This message should go to the log file
+DEBUG:root:This message should go to the log file
+DEBUG:root:This message should go to the log file
+DEBUG:root:This message should go to the log file
+WARNING:django.request:Not Found: /'/static/img/favicon-32x32.png'/
+WARNING:django.request:Not Found: /favicon.ico/
+ERROR:django.request:Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 109, in render
+    self.content = self.rendered_content
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 84, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 66, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loader.py", line 48, in select_template
+    return engine.get_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Invalid block tag on line 16: 'img-responsive', expected 'endblock'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 109, in render
+    self.content = self.rendered_content
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 84, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 66, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loader.py", line 48, in select_template
+    return engine.get_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: 'block' tag with name 'blog_post_list_post_featured_image' appears more than once
+WARNING:django.request:Not Found: /images/p1.jpg/
+WARNING:django.request:Not Found: /images/p1.jpg/
+WARNING:django.request:Not Found: /images/p1.jpg/
+WARNING:django.request:Not Found: /images/p1.jpg/
+WARNING:django.request:Not Found: /images/p1.jpg/
+ERROR:django.request:Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 109, in render
+    self.content = self.rendered_content
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 84, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 66, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loader.py", line 48, in select_template
+    return engine.get_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Invalid block tag on line 54: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 109, in render
+    self.content = self.rendered_content
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 84, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 66, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loader.py", line 48, in select_template
+    return engine.get_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Invalid block tag on line 25: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR:django.request:Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 109, in render
+    self.content = self.rendered_content
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 84, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/response.py", line 66, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loader.py", line 48, in select_template
+    return engine.get_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/backends/django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 160, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/engine.py", line 134, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/loaders/base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 233, in compile_nodelist
+    return parser.parse()
+  File "/Users/senzari/Machine_Learning/stats_blog/lib/python2.7/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Invalid block tag on line 15: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+WARNING:django.request:Not Found: /images/p1.jpg/
+WARNING:django.request:Not Found: /images/p2.jpg/
+WARNING:django.request:Not Found: /images/p4.jpg/
+WARNING:django.request:Not Found: /images/p3.jpg/
+WARNING:django.request:Not Found: /images/p1.jpg/
+WARNING:django.request:Not Found: /images/p2.jpg/
+WARNING:django.request:Not Found: /images/p3.jpg/
+WARNING:django.request:Not Found: /images/p4.jpg/

@@ -1,22 +1,31 @@
 <div class="content-right-top">
 {% load blog_tags keyword_tags mezzanine_tags i18n %}
+    <div class="editors-pic-grids">
+        {% block blog_recent_posts %}
+        {% blog_recent_posts 5 as recent_posts %}
+        {% if recent_posts %}
 
-{% block blog_recent_posts %}
-{% blog_recent_posts 5 as recent_posts %}
-{% if recent_posts %}
-
-<h5 class="head">{% trans "Recent Posts" %}</h5>  
-{% for recent_post in recent_posts %} 
-<a href="{{ recent_post.get_absolute_url }} ">
-<div class="editor text-center">
-    <h3>{{ recent_post.title }} </h3>
-    <p>{{ recent_post.description_from_content|safe }}</p>
-    <label>{% blocktrans with sometime=recent_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</label>
-    <span></span>
-</div>
-</a>
-{% endfor %}
-{% endif %}
-{% endblock %}
-
+        <h5>{% trans "Recent Posts" %}</h5>
+        {% for recent_post in recent_posts %}
+        <div class="editors-pic">
+        <!-- <a href="{{ recent_post.get_absolute_url }} "> -->
+            <div class="e-pic">
+                <a href="{{ recent_post.get_absolute_url }}"><img src="{{ MEDIA_URL }}{% thumbnail recent_post.featured_image 600 0 %}" alt="" /></a>
+            </div>
+            <div class="e-pic-info">
+                <a href="recent_post.get_absolute_url">{{ recent_post.title }}</a>
+                <span></span>
+                <label>{% blocktrans with sometime=recent_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</label>
+            </div>
+            <div class="clearfix"></div>
+            <!-- <h3>{{ recent_post.title }} </h3>
+            <p>{{ recent_post.description_from_content|safe }}</p>
+            <label>{% blocktrans with sometime=recent_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</label>
+            <span></span>-->
+        <!-- </a> -->
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endblock %}
+    </div>
 </div>

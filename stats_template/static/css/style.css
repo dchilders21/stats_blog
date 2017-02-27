@@ -4,6 +4,10 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+html, body {
+    height: 100%;
+    margin: 0;
+}
 body{
 	padding:0;
 	margin:0;
@@ -43,7 +47,7 @@ input[type="button"],input[type="submit"]{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:0 !important;
 }	
 p{
 	margin:0;
@@ -60,6 +64,21 @@ label{
 	padding-right: 0px !important; 
 	padding-left: 0px !important;
 }
+
+.container {
+    height: 100%;
+}
+
+.content {
+    height: 100%;
+    padding-bottom: 304px; /* Including Header */
+}
+
+.footer {
+    height: 200px;
+    margin-top: -200px;
+}
+
 /*-----start-header----*/
 .header {
 	background:#282828;
